@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique des Transactions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        th {
+            background-color: #006400;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .back-button {
+            background-color: #006400;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #004d00;
+        }
+    </style>
+</head>
+<body>
+    <h1>Historique des Transactions</h1>
+
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Numéro de Compte</th>
+            <th>Montant</th>
+        </tr>
+        <tr>
+            <td>12/01/2010</td>
+            <td>97200045172484</td>
+            <td>800.000€</td>
+        </tr>
+        <tr>
+            <td>15/05/2011</td>
+            <td>97200045172485</td>
+            <td>219.000€</td>
+        </tr>
+        <tr>
+            <td>19/03/2012</td>
+            <td>97200045172486</td>
+            <td>600.000€</td>
+        </tr>
+        <tr>
+            <td>25/07/2013</td>
+            <td>97200045172487</td>
+            <td>1.000.000€</td>
+        </tr>
+    </table>
+
+    <a href="account-details.html">
+        <button class="back-button">Retour au compte</button>
+    </a>
+</body>
+</html>

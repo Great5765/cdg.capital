@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        h1 {
+            color: #006400;
+        }
+
+        .info {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        label {
+            display: block;
+            margin: 15px auto 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input {
+            width: 90%;
+            max-width: 300px;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #006400;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #004d00;
+        }
+
+        .red-button {
+            background-color: #ff0000;
+            margin-top: 15px;
+        }
+
+        .red-button:hover {
+            background-color: #cc0000;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: red;
+            font-weight: bold;
+        }
+
+        .progress-container {
+            margin: 20px auto;
+            width: 300px;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #ff0000;
+            transition: width 0.1s linear;
+        }
+
+        .progress-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: #ffffff;
+            line-height: 20px;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Informations du compte -->
+        <h1>Compte Bloqué</h1>
+        <p class="info"><strong>Titulaire :</strong> FORTIN WILLIAM</p>
+        <p class="info"><strong>Solde :</strong> 2.619.000 €</p>
+        <p class="info"><strong>Statut :</strong> Bloqué en 26/13/2013</p>
+
+        <!-- Barre de progression -->
+        <div class="progress-container">
+            <div id="progressBar" class="progress-bar"></div>
+            <div id="progressText" class="progress-text">0%</div>
+        </div>
+
+        <!-- Champs pour IBAN, Montant et Email -->
+        <label for="iban">IBAN Destinataire :</label>
+        <input type="text" id="iban" placeholder="Entrez l'IBAN">
+
+        <label for="montant">Montant (€) :</label>
+        <input type="number" id="montant" placeholder="Entrez le montant">
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" placeholder="Entrez votre email">
+
+        <!-- Boutons Virement et Historique -->
+        <button onclick="afficherMessage()">Virement</button>
+        <button class="red-button" onclick="ouvrirHistorique()">Historique</button>
+
+        <!-- Message pour le virement -->
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        // Barre de progression automatique
+        window.onload = function() {
+            const progressBar = document.getElementById("progressBar");
+            const progressText = document.getElementById("progressText");
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                if (progress >= 91) {
+                    clearInterval(interval);
+                } else {
+                    progress++;
+                    progressBar.style.width = progress + "%";
+                    progressText.innerText = progress + "%";
+                }
+            }, 30);
+        }
+
+        // Afficher message de virement
+        function afficherMessage() {
+            const message = document.getElementById("message");
+            message.innerText = "Virement impossible, contactez votre gestionnaire.";
+        }
+
+        // Ouvrir la page historique
+        function ouvrirHistorique() {
+            window.open("historique.html", "_blank");
+        }
+    </script>
+</body>
+</html>

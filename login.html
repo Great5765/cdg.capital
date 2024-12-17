@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Connexion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            margin-top: 20px;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+            text-align: center;
+        }
+
+        .numpad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Pavé de 4 colonnes */
+            gap: 8px;
+            justify-content: center;
+            margin-top: 20px;
+            max-width: 200px;
+            margin: auto;
+        }
+
+        .numpad button {
+            padding: 8px;
+            font-size: 14px;
+            background-color: #006400; /* Vert */
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            animation: pulse 2.5s infinite; /* Animation constante */
+        }
+
+        .numpad button:hover {
+            background-color: #004d00; /* Vert plus foncé au survol */
+        }
+
+        .connect-btn {
+            background-color: #006400;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .connect-btn:hover {
+            background-color: #004d00;
+        }
+
+        /* Animation de pulsation */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 5px rgba(0, 100, 0, 0.6);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 15px rgba(0, 100, 0, 0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <img src="CDG.jpg" alt="Logo CDG CAPITAL" width="150">
+
+    <!-- Conteneur principal -->
+    <div class="container">
+        <h1>Connexion au Compte</h1>
+        <p>Veuillez entrer vos informations de connexion</p>
+
+        <!-- Champs de saisie -->
+        <input type="text" id="accountNumber" placeholder="Numéro de compte" onclick="setFocus('accountNumber')"><br>
+        <input type="password" id="password" placeholder="Mot de passe" onclick="setFocus('password')"><br>
+        <input type="text" id="cs1" placeholder="CS1" onclick="setFocus('cs1')"><br>
+
+        <!-- Pavé numérique et alphabétique -->
+        <div class="numpad">
+            <!-- Chiffres -->
+            <button onclick="ajouterCaractere('1')">1</button>
+            <button onclick="ajouterCaractere('2')">2</button>
+            <button onclick="ajouterCaractere('3')">3</button>
+            <button onclick="ajouterCaractere('4')">4</button>
+            <button onclick="ajouterCaractere('5')">5</button>
+            <button onclick="ajouterCaractere('6')">6</button>
+            <button onclick="ajouterCaractere('7')">7</button>
+            <button onclick="ajouterCaractere('8')">8</button>
+            <button onclick="ajouterCaractere('9')">9</button>
+            <button onclick="ajouterCaractere('0')">0</button>
+
+            <!-- Lettres -->
+            <button onclick="ajouterCaractere('A')">A</button>
+            <button onclick="ajouterCaractere('B')">B</button>
+            <button onclick="ajouterCaractere('C')">C</button>
+            <button onclick="ajouterCaractere('D')">D</button>
+            <button onclick="ajouterCaractere('E')">E</button>
+            <button onclick="ajouterCaractere('F')">F</button>
+            <button onclick="ajouterCaractere('G')">G</button>
+            <button onclick="ajouterCaractere('H')">H</button>
+            <button onclick="ajouterCaractere('I')">I</button>
+            <button onclick="ajouterCaractere('J')">J</button>
+            <button onclick="ajouterCaractere('K')">K</button>
+            <button onclick="ajouterCaractere('L')">L</button>
+            <button onclick="ajouterCaractere('M')">M</button>
+            <button onclick="ajouterCaractere('N')">N</button>
+            <button onclick="ajouterCaractere('O')">O</button>
+            <button onclick="ajouterCaractere('P')">P</button>
+            <button onclick="ajouterCaractere('Q')">Q</button>
+            <button onclick="ajouterCaractere('R')">R</button>
+            <button onclick="ajouterCaractere('S')">S</button>
+            <button onclick="ajouterCaractere('T')">T</button>
+            <button onclick="ajouterCaractere('U')">U</button>
+            <button onclick="ajouterCaractere('V')">V</button>
+            <button onclick="ajouterCaractere('W')">W</button>
+            <button onclick="ajouterCaractere('X')">X</button>
+            <button onclick="ajouterCaractere('Y')">Y</button>
+            <button onclick="ajouterCaractere('Z')">Z</button>
+
+            <!-- Effacer et valider -->
+            <button onclick="effacerDernier()">⌫</button>
+            <button onclick="effacerTout()">C</button>
+        </div>
+
+        <!-- Bouton de connexion -->
+        <button class="connect-btn" onclick="verifierConnexion()">Se connecter</button>
+    </div>
+
+    <script>
+        let champActif = "accountNumber"; // Par défaut, c'est le numéro de compte
+
+        // Fonction pour définir le champ actif
+        function setFocus(champ) {
+            champActif = champ;
+        }
+
+        // Fonction pour ajouter un caractère au champ actif
+        function ajouterCaractere(caractere) {
+            document.getElementById(champActif).value += caractere;
+        }
+
+        // Effacer le dernier caractère du champ actif
+        function effacerDernier() {
+            const input = document.getElementById(champActif);
+            input.value = input.value.slice(0, -1);
+        }
+
+        // Effacer tout le contenu du champ actif
+        function effacerTout() {
+            document.getElementById(champActif).value = "";
+        }
+
+        // Fonction pour vérifier les informations de connexion
+        function verifierConnexion() {
+            const numeroCompteCorrect = "97200045172484"; // Numéro de compte correct
+            const motDePasseCorrect = "C300013W1"; // Mot de passe correct
+            const cs1Correct = "131366C"; // Code CS1 correct
+
+            let accountNumber = document.getElementById("accountNumber").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let cs1 = document.getElementById("cs1").value.trim();
+
+            if (accountNumber === numeroCompteCorrect && password === motDePasseCorrect && cs1 === cs1Correct) {
+                window.location.href = "account-details.html"; // Redirection vers la page des détails
+            } else {
+                alert("Informations incorrectes !");
+            }
+        }
+    </script>
+</body>
+</html>
